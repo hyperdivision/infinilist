@@ -1,6 +1,6 @@
 # Infinilist
 
-> hui compoenent for listing a millions of items, partially rendering only a
+> hui component for listing a millions of items, partially rendering only a
 > viewport and viewport buffer amount of them, using a single intersection observer
 
 

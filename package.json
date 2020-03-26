@@ -1,5 +1,5 @@
 {
-  "name": "@hyperdivision/infinilist",
+  "name": "@hui/infinilist",
   "version": "1.0.0",
   "description": "hui component for partial rendering big lists",
   "main": "index.js",
