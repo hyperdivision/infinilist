@@ -7,15 +7,17 @@
 ## Usage example
 
 ``` js
-const Infinilist = require('@hyperdivision/infinilist')
+const Infinilist = require('infinilist')
 const html = require('hui/html')
 
 const items = [ ...millionsOfItems ]
 
 // render function passed down to list, requesting a rendered item at index
 const renderItem (i) {
-  return html`<li>items[i]</li>`
+  return html`<li>${items[i]}</li>`
 }
 
 const list = new Infinilist(renderItem, { total: items.length })
+
+document.body.appendChild(list.element)
 ```
