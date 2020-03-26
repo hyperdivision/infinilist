@@ -1,0 +1,32 @@
+{
+  "name": "@hyperdivision/infinilist",
+  "version": "1.0.0",
+  "description": "hui component for partial rendering big lists",
+  "main": "index.js",
+  "scripts": {
+    "test": "vhs-tape test.js",
+    "debug": "nanotron test.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hyperdivision/infinilist.git"
+  },
+  "keywords": [
+    "infinite",
+    "scroll",
+    "list",
+    "hui"
+  ],
+  "author": "Bendik Lynghaug",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/hyperdivision/infinilist/issues"
+  },
+  "homepage": "https://github.com/hyperdivision/infinilist#readme",
+  "devDependencies": {
+    "vhs-tape": "^3.3.0"
+  },
+  "dependencies": {
+    "hui": "^1.3.0"
+  }
+}
