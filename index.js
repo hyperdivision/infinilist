@@ -11,7 +11,7 @@ const btmCss = `
   min-height: calc(var(--row-height, 20px) * calc(var(--total-count) - calc(var(--position, 0) + var(--child-count))));
 `
 
-module.exports = class Infinitable extends Component {
+module.exports = class Infinilist extends Component {
   constructor (renderItem, opts = {}) {
     super()
 
