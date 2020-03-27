@@ -46,12 +46,12 @@ module.exports = class Infinilist extends Component {
   resize (totalCount) {
     this._totalCount = totalCount
     this._renderResize = true
-    this.render()
+    this.update()
   }
 
   reset () {
     this._renderReset = true
-    this.render()
+    this.update()
   }
 
   get pageSize () {
@@ -163,7 +163,7 @@ module.exports = class Infinilist extends Component {
 
     if (!this._children.firstChild && this._totalCount > 0) {
       const rect = this.element.getBoundingClientRect()
-      top = Math.max(0, Math.floor(this._totalCount * -(rect.top / rect.height)) - this.pageSize)
+      top = Math.max(0, Math.floor(this._totalCount * -(rect.top / rect.height)) - this.pageSize) || 0
       btm = Math.min(top + 3 * this.pageSize, this._totalCount)
       this.element.style.setProperty('--position', top)
       this.element.style.setProperty('--child-count', 1)
