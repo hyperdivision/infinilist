@@ -16,7 +16,7 @@ module.exports = class Infinilist extends Component {
     super()
 
     this._startingIndex = opts.startingIndex || 0
-    this._totalCount = opts.total === 0 ? 0 : opts.total || 1000
+    this._totalCount = opts.total === 0 ? 0 : (opts.total || 1000)
     this._renderItem = renderItem
     this._defaultRowHeight = opts.rowHeight || 20
     this._children = document.createElement('div')
@@ -161,7 +161,7 @@ module.exports = class Infinilist extends Component {
 
     this._updateElements(top, btm)
 
-    if (!this._children.firstChild) {
+    if (!this._children.firstChild && this._totalCount > 0) {
       const rect = this.element.getBoundingClientRect()
       top = Math.max(0, Math.floor(this._totalCount * -(rect.top / rect.height)) - this.pageSize)
       btm = Math.min(top + 3 * this.pageSize, this._totalCount)

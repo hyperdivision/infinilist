@@ -14,7 +14,7 @@ module.exports = class Infinitable extends Component {
     super()
 
     this._startingIndex = opts.startingIndex || 0
-    this._totalCount = opts.total === 0 ? 0 : opts.total || 1000
+    this._totalCount = opts.total === 0 ? 0 : (opts.total || 1000)
     this._renderItem = renderItem
     this._defaultRowHeight = opts.rowHeight || 20
     this._children = null
@@ -101,7 +101,7 @@ module.exports = class Infinitable extends Component {
       else break
     }
 
-    while (this._children.childElementCount > 2) {
+    while (this._children.childElementCount > 2 && this._totalCount > 0) {
       const child = this._children.lastChild.previousSibling
       const index = this._indices.get(child)
 
