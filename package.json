@@ -2,7 +2,7 @@
   "name": "infinilist",
   "version": "1.1.0",
   "description": "hui component for partial rendering big lists",
-  "main": "index.js",
+  "main": "list.js",
   "browserify": {
     "transform": [
       "hui/html"
