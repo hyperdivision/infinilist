@@ -3,6 +3,11 @@
   "version": "1.1.0",
   "description": "hui component for partial rendering big lists",
   "main": "index.js",
+  "browserify": {
+    "transform": [
+      "hui/html"
+    ]
+  },
   "scripts": {
     "test": "vhs-tape test.js",
     "debug": "nanotron test.js"
