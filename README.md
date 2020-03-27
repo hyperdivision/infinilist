@@ -21,3 +21,13 @@ const list = new Infinilist(renderItem, { total: items.length })
 
 document.body.appendChild(list.element)
 ```
+
+## API
+
+#### `list.resize(newTotalCount)`
+
+Update the total count after the element has been created
+
+#### `list.reset()`
+
+Recreates all currently showed elements. Useful if your underlying array changes.

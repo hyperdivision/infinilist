@@ -22,6 +22,8 @@ module.exports = class Infinitable extends Component {
     this._children = document.createElement('div')
     this._indices = new WeakMap()
     this._visible = new Set()
+    this._renderReset = false
+    this._renderResize = false
     this._bottomSentinel = html`<div style="${btmCss}"></div>`
     this._topSentinel = html`<div style="${topCss}"></div>`
 
@@ -39,6 +41,17 @@ module.exports = class Infinitable extends Component {
 
       this.update()
     })
+  }
+
+  resize (totalCount) {
+    this._totalCount = totalCount
+    this._renderResize = true
+    this.render()
+  }
+
+  reset () {
+    this._renderReset = true
+    this.render()
   }
 
   get pageSize () {
@@ -133,7 +146,18 @@ module.exports = class Infinitable extends Component {
   }
 
   render () {
+    if (this._renderResize) {
+      this._renderResize = false
+      this.element.style.setProperty('--total-count', this._totalCount)
+    }
+
     let [top, btm] = this._viewport()
+
+    if (this._renderReset) {
+      this._renderReset = false
+      while (this._children.lastChild) this._removeChild(this._children.lastChild)
+      this._addChild(top, false)
+    }
 
     this._updateElements(top, btm)
 
