@@ -14,7 +14,7 @@ module.exports = class Infinitable extends Component {
     super()
 
     this._startingIndex = opts.startingIndex || 0
-    this._totalCount = opts.total || 1000
+    this._totalCount = opts.total === 0 ? 0 : opts.total || 1000
     this._renderItem = renderItem
     this._defaultRowHeight = opts.rowHeight || 20
     this._children = null
