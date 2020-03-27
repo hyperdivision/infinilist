@@ -154,7 +154,7 @@ module.exports = class Infinitable extends Component {
     if (this._renderReset) {
       this._renderReset = false
       while (this._children.childElementCount > 2) this._removeChild(this._children.lastChild.previousSibling)
-      this._addChild(top, false)
+      if (this._totalCount > 0) this._addChild(top, false)
     }
 
     this._updateElements(top, btm)

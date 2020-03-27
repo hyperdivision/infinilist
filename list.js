@@ -156,7 +156,7 @@ module.exports = class Infinilist extends Component {
     if (this._renderReset) {
       this._renderReset = false
       while (this._children.lastChild) this._removeChild(this._children.lastChild)
-      this._addChild(top, false)
+      if (this._totalCount > 0) this._addChild(top, false)
     }
 
     this._updateElements(top, btm)
