@@ -146,6 +146,8 @@ module.exports = class Infinilist extends Component {
   }
 
   render () {
+    if (!this.loaded) return
+
     if (this._renderResize) {
       this._renderResize = false
       this.element.style.setProperty('--total-count', this._totalCount)
