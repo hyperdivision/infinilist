@@ -24,6 +24,7 @@ module.exports = class Infinitable extends Component {
     this._renderResize = false
     this._bottomSentinel = html`<tr style="${btmCss}"></tr>`
     this._topSentinel = html`<tr style="${topCss}"></tr>`
+    this._setDefaultHeight = !!opts.rowHeight
 
     this._observer = new window.IntersectionObserver((entries, observer) => {
       for (const entry of entries) {
@@ -71,12 +72,7 @@ module.exports = class Infinitable extends Component {
     const end = Math.min(this._startingIndex + this.pageSize * 3, this._totalCount)
 
     for (let i = this._startingIndex; i < end; ++i) {
-      const el = this._addChild(i, false)
-      if (i === this._startingIndex) {
-        const { height } = el.getBoundingClientRect()
-        this._defaultRowHeight = height
-        this.element.style.setProperty('--row-height', `${height}px`)
-      }
+      this._addChild(i, false)
     }
 
     this._observer.observe(this._bottomSentinel)
@@ -140,6 +136,14 @@ module.exports = class Infinitable extends Component {
     if (prepend) this._children.insertBefore(el, this._children.firstChild.nextSibling)
     else this._children.insertBefore(el, this._children.lastChild)
     this.element.style.setProperty('--child-count', this._children.childElementCount - 2)
+
+    if (!this._setDefaultHeight) {
+      const { height } = el.getBoundingClientRect()
+      this._setDefaultHeight = true
+      this._defaultRowHeight = height
+      this.element.style.setProperty('--row-height', `${height}px`)
+    }
+
     return el
   }
 
